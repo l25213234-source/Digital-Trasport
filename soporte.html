@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soporte | Digital Transport</title>
+    <style>
+        :root {
+            --primary: #00c3ff;
+            --dark-bg: #0b1c2d;
+            --gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            --white: #ffffff;
+            /* Colores de botones del menú */
+            --c-inicio: #3b82f6; 
+            --c-nosotros: #7a0366; 
+            --c-app: #f59e0b;
+            --c-soporte: #8b5cf6; 
+            --c-publicaciones: #ec4899;
+            --c-contacto: #ef4444; 
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+
+        body {
+            background: var(--gradient);
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ====== NAVEGACIÓN (ESTILO GLOBAL CORREGIDO) ====== */
+        nav {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            padding: 12px 40px; 
+            background: var(--dark-bg); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .logo-container { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            color: white; 
+            font-weight: bold; 
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .logo-container img { 
+            width: 40px; 
+            height: 40px; 
+            border-radius: 8px; 
+            background: white; 
+            padding: 2px; 
+        }
+        
+        .menu-links { 
+            display: flex; 
+            gap: 8px; 
+            flex-wrap: wrap; 
+        }
+
+        .menu-links a {
+            color: white; 
+            text-decoration: none; 
+            padding: 10px 14px; 
+            border-radius: 6px;
+            font-size: 0.7rem; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            transition: 0.3s;
+        }
+
+        /* Colores específicos de botones */
+        .btn-inicio { background: var(--c-inicio); }
+        .btn-nosotros { background: var(--c-nosotros); }
+        .btn-rutas { background: var(--c-app); }
+        .btn-soporte { background: var(--c-soporte); border: 2px solid white; box-shadow: 0 0 10px rgba(139, 92, 246, 0.5); }
+        .btn-publi { background: var(--c-publicaciones); }
+        .btn-acerca { background: transparent; }
+        .btn-contacto { background: var(--c-contacto); }
+
+        .menu-links a:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+        /* ====== SECCIÓN HERO ====== */
+        .support-hero { text-align: center; padding: 40px 20px 20px; }
+        .support-hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .support-hero p { opacity: 0.8; margin-bottom: 30px; }
+
+        /* ====== FAQ SECTION ====== */
+        .faq-section {
+            max-width: 800px;
+            width: 95%;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+        }
+        .faq-section h2 { text-align: center; margin-bottom: 25px; color: var(--primary); }
+        
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            margin-bottom: 10px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .faq-question {
+            padding: 18px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .faq-question:hover { background: rgba(0, 195, 255, 0.1); }
+        .faq-answer {
+            padding: 0 25px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            background: rgba(0, 0, 0, 0.2);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ccc;
+        }
+        .faq-item.active-faq .faq-answer {
+            padding: 20px 25px;
+            max-height: 200px;
+        }
+        .faq-item.active-faq .faq-question {
+            color: var(--primary);
+            border-bottom: 1px solid rgba(0, 195, 255, 0.2);
+        }
+
+        /* ====== QUICK CARDS ====== */
+        .quick-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+        }
+        .q-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .q-card:hover { 
+            background: rgba(0, 195, 255, 0.15); 
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+        .q-card i { font-size: 2rem; display: block; margin-bottom: 10px; font-style: normal; }
+
+        /* ====== CHATBOT ====== */
+        .chat-container {
+            max-width: 800px;
+            width: 95%;
+            margin: 0 auto 60px;
+            background: rgba(11, 28, 45, 0.95);
+            border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid rgba(0, 195, 255, 0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .chat-header {
+            background: var(--primary);
+            color: var(--dark-bg);
+            padding: 15px 25px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chat-box {
+            padding: 25px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            height: 400px;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 12px 18px;
+            margin: 8px 0;
+            border-radius: 18px;
+            font-size: 0.9rem;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bot { background: #1a3a5a; color: white; align-self: flex-start; border-bottom-left-radius: 2px; }
+        .user { background: var(--primary); color: var(--dark-bg); font-weight: 600; align-self: flex-end; border-bottom-right-radius: 2px; }
+
+        .input-area { display: flex; padding: 15px; background: #081420; gap: 10px; }
+        input[type="text"] {
+            flex: 1; padding: 12px 20px; border: none; border-radius: 25px;
+            background: #1a3a5a; color: white; outline: none;
+        }
+        .btn-send {
+            padding: 0 25px; border: none; border-radius: 25px;
+            background: var(--primary); color: var(--dark-bg);
+            font-weight: bold; cursor: pointer; transition: 0.3s;
+        }
+        .btn-send:hover { filter: brightness(1.2); }
+
+        @media(max-width: 768px) {
+            .menu-links { display: none; }
+            .support-hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="logo-container">
+        <img src="taxi.jpg" alt="Logo"> DIGITAL TRANSPORT
+    </a>
+    <div class="menu-links">
+        <a href="index.html" class="btn-inicio">Inicio</a>
+        <a href="nosotros.html" class="btn-nosotros">Nosotros</a>
+        <a href="app.html" class="btn-rutas">APP</a>
+        <a href="soporte.html" class="btn-soporte">Soporte</a>
+        <a href="publicaciones.html" class="btn-publi">Publicaciones</a>
+        <a href="acercade.html" class="btn-acerca">Acerca de</a>
+        <a href="contacto.html" class="btn-contacto">Contacto</a>
+        <a href="produccion.html" >Digital trasport</a>
+    </div>
+</nav>
+
+<div class="support-hero">
+    <h1>¿En qué podemos ayudarte?</h1>
+    <p>Centro de Ayuda Inteligente de Digital Transport</p>
+</div>
+
+<div class="faq-section">
+    <h2>Preguntas Frecuentes</h2>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">¿Cómo sé qué taxi me lleva a Otay? <span>+</span></div>
+        <div class="faq-answer">Puedes tomar los taxis Azul con Blanco desde el Centro o los taxis Café con Blanco si vienes desde la 5 y 10. Ambos son directos.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">¿Hay transporte directo a Playas? <span>+</span></div>
+        <div class="faq-answer">Sí, los taxis Blanco con Franja Azul salen directamente desde la Calle 2da en el Centro de Tijuana.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">¿Los precios suben de noche? <span>+</span></div>
+        <div class="faq-answer">Generalmente, después de las 11:00 PM, los transportes suelen aplicar una tarifa nocturna que puede subir entre $2 y $5 MXN adicionales.</div>
+    </div>
+</div>
+
+<div class="quick-cards">
+    <div class="q-card" onclick="autoPregunta('¿Cuáles son las rutas?')">
+        <i>📍</i><strong>Rutas</strong><p>Ver cobertura en Tijuana</p>
+    </div>
+    <div class="q-card" onclick="autoPregunta('¿Cuál es el precio?')">
+        <i>💵</i><strong>Tarifas</strong><p>Costos actualizados</p>
+    </div>
+    <div class="q-card" onclick="autoPregunta('¿Qué taxis hay?')">
+        <i>🚖</i><strong>Transporte</strong><p>Tipos de unidades</p>
+    </div>
+</div>
+
+<div class="chat-container">
+    <div class="chat-header"><span>🤖</span> Asistente Digital Transport</div>
+    <div class="chat-box" id="chat">
+        <div class="message bot">
+            👋 <b>¡Hola! Bienvenido a Soporte.</b><br>
+            Soy tu guía de transporte en Tijuana. ¿Tienes dudas sobre rutas, precios o unidades? ¡Escríbeme!
+        </div>
+    </div>
+    <div class="input-area">
+        <input type="text" id="input" placeholder="Escribe tu mensaje aquí..." onkeypress="if(event.key==='Enter') sendMessage()">
+        <button class="btn-send" onclick="sendMessage()">ENVIAR</button>
+    </div>
+</div>
+
+<script>
+function toggleFaq(element) {
+    const parent = element.parentElement;
+    parent.classList.toggle('active-faq');
+    const span = element.querySelector('span');
+    span.innerText = parent.classList.contains('active-faq') ? '-' : '+';
+}
+
+function autoPregunta(texto) {
+    document.getElementById("input").value = texto;
+    sendMessage();
+}
+
+function sendMessage(){
+    let input = document.getElementById("input");
+    let message = input.value.trim().toLowerCase();
+    if(message === "") return;
+
+    let chat = document.getElementById("chat");
+    let userMsg = document.createElement("div");
+    userMsg.className = "message user";
+    userMsg.innerText = input.value;
+    chat.appendChild(userMsg);
+
+    let botResponse = document.createElement("div");
+    botResponse.className = "message bot";
+
+    if(message.includes("ruta") || message.includes("donde")){
+        botResponse.innerHTML = "📍 <b>Rutas:</b> Cubrimos Zona Río, Centro, 5 y 10, Otay, Playas, El Florido y Natura.";
+    } else if(message.includes("precio") || message.includes("costo") || message.includes("cuanto")){
+        botResponse.innerHTML = "💵 <b>Tarifas:</b> Cortas ($15-$18 MXN) y Largas ($23 MXN).";
+    } else if(message.includes("taxi")){
+        botResponse.innerHTML = "🚖 <b>Servicios:</b> Taxis Rojos, Guindas, Blanco/Azul (Playas) y Blanco/Amarillo.";
+    } else {
+        botResponse.innerHTML = "🤖 Entendido. Para temas técnicos, contáctanos en soporte@digitaltransport.mx";
+    }
+
+    setTimeout(()=>{ chat.appendChild(botResponse); chat.scrollTop = chat.scrollHeight; }, 400);
+    input.value="";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publicaciones | Digital Transport</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-rosa: #ec4899; 
+            --dark-bg: #0f172a;
+            --c-inicio: #3b82f6;
+            --c-nosotros: #10b981;
+            --c-app: #f59e0b;
+            --c-contacto: #ef4444;
+            --c-soporte: #8b5cf6;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        
+        body { 
+            background: #f8fafc; /* Gris muy claro y limpio */
+            color: #334155;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVEGACIÓN (Se mantiene igual) --- */
+        .nav-global {
+            background: var(--dark-bg);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo-nav { display: flex; align-items: center; gap: 12px; color: white; font-weight: 600; text-decoration: none; }
+        .logo-nav img { width: 38px; height: 38px; border-radius: 6px; background: white; padding: 2px; }
+        
+        .nav-links { display: flex; gap: 8px; }
+        .nav-links a {
+            color: white; text-decoration: none; font-size: 0.7rem;
+            font-weight: 600; padding: 10px 14px; border-radius: 8px;
+            text-transform: uppercase; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .nav-links a:hover { transform: scale(1.1); filter: brightness(1.1); }
+        .active-page { background: var(--brand-rosa) !important; box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3); }
+
+        /* --- HEADER (Sin rosa) --- */
+        .hero-pub {
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.8)), 
+                        url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format&fit=crop'); 
+            background-size: cover; background-position: center;
+            color: white; padding: 80px 20px; text-align: center;
+        }
+        .hero-pub h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; }
+        .hero-pub p { font-size: 1rem; opacity: 0.8; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+
+        /* --- CARDS (Sin rosa) --- */
+        .media-flex { display: flex; gap: 25px; flex-wrap: wrap; margin-top: -50px; }
+
+        .glass-card {
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .glass-card:hover { transform: translateY(-5px); }
+
+        .video-box { flex: 2; padding: 20px; min-width: 350px; }
+        
+        .video-link {
+            position: relative; display: block; width: 100%; padding-bottom: 56.25%;
+            background-image: url('https://img.youtube.com/vi/MEvHkUhgtmA/maxresdefault.jpg');
+            background-size: cover; background-position: center;
+            border-radius: 15px; overflow: hidden;
+        }
+
+        /* El botón de play lo dejamos oscuro/transparente para ser sobrios */
+        .video-link::after {
+            content: '▶';
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(15, 23, 42, 0.9); color: white;
+            width: 70px; height: 70px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px;
+        }
+
+        .audio-box {
+            flex: 1; padding: 30px; min-width: 300px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        
+        .audio-icon { font-size: 2.5rem; margin-bottom: 15px; color: var(--dark-bg); }
+
+        /* --- SECCIONES --- */
+        .section-title { text-align: center; margin: 60px 0 30px; font-size: 1.8rem; font-weight: 700; color: var(--dark-bg); }
+
+        .volante-container {
+            max-width: 750px; margin: 0 auto; padding: 15px;
+            background: white; border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+        .volante-container img { width: 100%; border-radius: 15px; }
+
+        /* --- REDES SOCIALES --- */
+        .social-grid { display: flex; justify-content: center; gap: 40px; margin-top: 30px; }
+        .social-item { text-decoration: none; color: #475569; text-align: center; font-weight: 600; }
+        
+        .circle-icon {
+            width: 70px; height: 70px; border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 10px; transition: 0.3s;
+        }
+        .social-item:hover .circle-icon { transform: translateY(-5px); }
+        
+        .fb-bg { background: #1877f2; }
+        .ig-bg { background: #C13584; } /* Instagram ahora sobrio en azul oscuro */
+        .circle-icon img { width: 35px; filter: brightness(0) invert(1); }
+
+        footer {
+            background: var(--dark-bg); color: white; padding: 50px 20px;
+            text-align: center; margin-top: 80px; font-size: 0.9rem;
+        }
+        
+        .fade-in { animation: fadeIn 0.8s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <nav class="nav-global">
+        <a href="inicio.html" class="logo-nav">
+            <img src="taxi.jpg" alt="Logo"> Digital Transport
+        </a>
+        <div class="nav-links">
+            <a href="index.html" style="background:var(--c-inicio)">Inicio</a>
+            <a href="nosotros.html" style="background:var(--c-nosotros)">Nosotros</a>
+            <a href="app.html" style="background:var(--c-app)">App</a>
+            <a href="soporte.html" style="background:var(--c-soporte)">Soporte</a>
+            <a href="publicaciones.html" class="active-page">Publicaciones</a>
+            <a href="acercade.html">Acerca De </a>
+            <a href="contacto.html" style="background:var(--c-contacto)">Contacto</a>
+            <a href="produccion.html" >Digital trasport</a>
+        </div>
+    </nav>
+
+    <header class="hero-pub">
+        <div class="fade-in">
+            <h1>Centro de Medios</h1>
+        <p>Entérate de lo último en movilidad y nuestras campañas actuales.</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="media-flex">
+            <div class="glass-card video-box fade-in">
+                <a href="https://www.youtube.com/watch?v=MEvHkUhgtmA" target="_blank" class="video-link"></a>
+                <div style="padding-top: 20px; text-align: center;">
+                    <h3 style="font-weight: 700;">Spot Publicitario</h3>
+                    <p style="color: #64748b; font-size: 0.85rem;">Ver en YouTube</p>
+                </div>
+            </div>
+
+            <div class="glass-card audio-box fade-in">
+                <div class="audio-icon">🎙️</div>
+                <h3 style="margin-bottom: 15px; font-weight: 700;">Spot Radio</h3>
+                <audio controls style="width: 100%;">
+                    <source src="spot radio.m4a" type="audio/mp4">
+                    Tu navegador no soporta el audio.
+                </audio>
+                <p style="margin-top: 15px; color: #64748b; font-size: 0.8rem;">Escucha nuestro anuncio oficial</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Información Corporativa</h2>
+        <div class="volante-container fade-in">
+            <img src="IMG-20260310-WA0012.jpg" alt="Volante Informativo">
+        </div>
+
+        <h2 class="section-title">Nuestras Comunidades</h2>
+        <div class="social-grid fade-in">
+            <a href="https://www.facebook.com/share/1Gmc1ge94Y/" target="_blank" class="social-item">
+                <div class="circle-icon fb-bg">
+                    <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook">
+                </div>
+                <span>Facebook</span>
+            </a>
+            <a href="https://www.instagram.com/digit_altransport?igsh=OXUwYXRyOWJqa2Zt target="_blank" class="social-item">
+                <div class="circle-icon ig-bg">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+                </div>
+                <span>Instagram</span>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Digital Transport - Tijuana, B.C.</p>
+    </footer>
+
+</body>
+</html>
+
+
+
+

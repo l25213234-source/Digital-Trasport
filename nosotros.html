@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Nosotros | Digital Transport</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    :root {
+        --primary: #12b0a6;
+        --dark: #0b1c2d;
+        --light-bg: #f8fafc;
+        --c-inicio: #3b82f6;
+        --c-nosotros: #10b981;
+        --c-app: #f59e0b;
+        --c-contacto: #ef4444;
+        --c-soporte: #8b5cf6;
+        --c-publicaciones: #ec4899;
+    }
+
+    body { margin:0; font-family:'Inter', sans-serif; background: var(--light-bg); color: #334155; line-height: 1.6; }
+
+    /* ====== NAVEGACIÓN ====== */
+    nav {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 12px 40px; background: var(--dark); position: sticky; top: 0; z-index: 1000;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .logo-container { display: flex; align-items: center; gap: 12px; color: white; font-weight: bold; text-transform: uppercase; }
+    .logo-container img { width: 45px; height: 45px; border-radius: 8px; background: white; padding: 2px; object-fit: contain; }
+    
+    .menu-links { display: flex; gap: 8px; }
+    .menu-links a {
+        color: white; text-decoration: none; padding: 8px 14px; border-radius: 8px;
+        font-size: 0.85rem; font-weight: 800; transition: 0.3s; text-transform: uppercase;
+    }
+
+    .btn-inicio { background: var(--c-inicio); }
+    .btn-nosotros { background: var(--c-nosotros); border-bottom: 3px solid white; }
+    .btn-app { background: var(--c-app); }
+    .btn-contacto { background: var(--c-contacto); }
+    .btn-soporte { background: var(--c-soporte); }
+    .btn-publicaciones { background: var(--c-publicaciones); }
+
+    .menu-links a:hover { transform: translateY(-3px); filter: brightness(1.1); }
+
+    /* ====== ENCABEZADO ====== */
+    .header-section {
+        background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%);
+        color: white; padding: 80px 20px; text-align: center;
+    }
+    .header-section h1 { font-size: 3rem; margin: 0; }
+    .header-section p { font-size: 1.2rem; opacity: 0.8; margin-top: 10px; }
+
+    /* ====== CONTENEDOR ====== */
+    .container { max-width: 1100px; margin: -50px auto 60px; padding: 0 20px; }
+    .main-card { background: white; padding: 50px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+
+    .section-title {
+        color: var(--dark); font-size: 2rem; border-left: 5px solid var(--c-nosotros);
+        padding-left: 15px; margin-top: 40px; margin-bottom: 20px;
+    }
+
+    .highlight-box {
+        background: #f1f5f9; padding: 25px; border-radius: 15px;
+        border-left: 5px solid var(--primary); margin: 20px 0;
+    }
+
+    /* ====== ESPACIO PARA FOTO DE COLABORADORES ====== */
+    .team-photo-container {
+        margin-top: 50px;
+        text-align: center;
+        padding: 10px;
+        background: linear-gradient(135deg, var(--primary), var(--c-nosotros));
+        border-radius: 30px;
+        box-shadow: 0 15px 35px rgba(18, 176, 166, 0.3);
+    }
+
+    .photo-wrapper {
+        background: #fff; border-radius: 22px; padding: 15px; overflow: hidden;
+    }
+
+    .photo-wrapper img {
+        width: 100%; max-width: 1000px; height: auto; border-radius: 15px;
+        display: block; margin: 0 auto; background: #e2e8f0; min-height: 300px;
+    }
+
+    .team-caption { margin-top: 20px; padding-bottom: 10px; color: white; }
+    .team-caption h3 { font-size: 1.6rem; margin: 0; text-shadow: 1px 1px 4px rgba(0,0,0,0.2); }
+    .team-caption p { opacity: 0.9; font-weight: 500; margin-top: 5px; }
+
+    footer { background: var(--dark); color: white; text-align: center; padding: 40px 20px; }
+
+    @media (max-width: 768px) {
+        nav { flex-direction: column; gap: 15px; }
+        .menu-links { flex-wrap: wrap; justify-content: center; }
+        .main-card { padding: 25px; }
+    }
+</style>
+</head>
+<body>
+
+<nav>
+    <div class="logo-container">
+        <img src="taxi.jpg" alt="Digital Transport Logo">
+        Digital Transport
+    </div>
+    <div class="menu-links">
+        <a href="index.html" class="btn-inicio">Inicio</a>
+        <a href="nosotros.html" class="btn-nosotros">Nosotros</a>
+        <a href="app.html" class="btn-app">App</a>
+        <a href="soporte.html" class="btn-soporte">Soporte</a>
+        <a href="publicaciones.html" class="btn-publicaciones">Publicaciones</a>
+        <a href="acercade.html">Acerca de </a>
+        <a href="contacto.html" class="btn-contacto">Contacto</a>
+        <a href="produccion.html" >Digital trasport</a>
+    </div>
+</nav>
+
+<header class="header-section">
+    <h1>Conoce Nuestra Historia</h1>
+    <p>Innovación y compromiso con la movilidad de Tijuana</p>
+</header>
+
+<main class="container">
+    <div class="main-card">
+        
+        <h2 class="section-title">Misión de la Empresa</h2>
+        <p>
+            La misión de <strong>Digital Transport</strong> es satisfacer la necesidad de las personas de moverse en transporte público de manera eficaz y ahorrando dinero, ofreciendo información clara, actualizada y precisa sobre rutas, costos y tráfico en tiempo real.
+        </p>
+        <div class="highlight-box">
+            <strong>Dirigido a:</strong> Estudiantes, trabajadores y ciudadanos en general que necesiten trasladarse dentro de la ciudad de Tijuana de forma inteligente.
+        </div>
+
+        <h2 class="section-title">Visión de la Empresa</h2>
+        <p>
+            Digital Transport busca consolidarse como líder en soluciones de movilidad urbana en México, destacándose por su innovación y por facilitar el traslado de las personas de manera eficiente. Nuestro objetivo principal es mejorar la experiencia de los usuarios, optimizando tiempos y brindando seguridad.
+        </p>
+        
+        <p>
+            A largo plazo, nuestra meta es expandir la plataforma a otras ciudades de México, consolidándonos como una herramienta confiable, útil y fácil de usar, contribuyendo a disminuir el estrés en los traslados y promoviendo una movilidad urbana de primer nivel.
+        </p>
+
+        <div class="team-photo-container">
+            <div class="photo-wrapper">
+                <img src="IMG-20260310-WA0013.jpg" alt="Equipo de Digital Transport Colaboradores">
+            </div>
+            <div class="team-caption">
+                <h3>Nuestro Equipo de Colaboradores</h3>
+                <p>Mentes brillantes trabajando por una mejor movilidad en Tijuana</p>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer>
+    <p><strong>Digital Transport © 2026</strong></p>
+    <p>Misión de San Javier 10643-400, Zona Río, Tijuana, B.C.</p>
+</footer>
+
+</body>
+</html>
+
+
+
+
